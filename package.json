@@ -1,0 +1,26 @@
+{
+  "name": "auth-bypass",
+  "version": "1.0.0",
+  "description": "Middleware for express and postgreSQL to bypass authentication workflows in a development environment, but not in a production environment. Basically, you won't need to log in every time your express server restarts and clears the session store.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/travisallen6/auth-bypass.git"
+  },
+  "keywords": [
+    "auth",
+    "bypass",
+    "middleware",
+    "express"
+  ],
+  "author": "Travis Allen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/travisallen6/auth-bypass/issues"
+  },
+  "homepage": "https://github.com/travisallen6/auth-bypass#readme",
+  "dependencies": {}
+}
