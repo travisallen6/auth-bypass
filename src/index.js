@@ -23,9 +23,10 @@ function withDB(dbConfig, config = {}) {
       next();
     };
   }
-  const { env } = config;
+  let { env } = config;
   const { table, column, id } = dbConfig;
   return function widDBMiddleware(req, res, next) {
+    env = env || 'NODE_ENV';
     if (!req.session.user && process.env[env]) {
       req.app
         .get('db')
@@ -33,24 +34,21 @@ function withDB(dbConfig, config = {}) {
         .then(user => {
           if (user.length === 1) {
             req.session.user = user;
-            next();
           } else if (user.length === 0) {
             throw new Error(
               'No user was returned from the database based on the database configuration you provided. No user data will be placed on req.session.user.'
             );
-            next();
           } else {
             throw new Error(
               'More than one user was returned given the provided database configuration. No user data will be placed on req.session.user'
             );
-            next();
           }
         })
         .catch(err => {
           throw new Error(err);
-          next();
         });
     }
+    next();
   };
 }
 
