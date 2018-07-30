@@ -33,7 +33,8 @@ function withDB(dbConfig, config = {}) {
         .find({ [column]: id })
         .then(user => {
           if (user.length === 1) {
-            req.session.user = user[0];
+            const [foundUser] = user;
+            req.session.user = foundUser;
             next();
           } else if (user.length === 0) {
             throw new Error(
