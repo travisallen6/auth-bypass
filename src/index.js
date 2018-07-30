@@ -28,9 +28,9 @@ function withDB(dbConfig, config = {}) {
   return function widDBMiddleware(req, res, next) {
     env = env || 'NODE_ENV';
     if (!req.session.user && process.env[env]) {
-      req.app
-        .get('db')
-        .run('select * from $1 where $2 = $3;', [table, column, id])
+      const db = req.app.get('db');
+      db[table]
+        .find({ [column]: id })
         .then(user => {
           if (user.length === 1) {
             req.session.user = user;
