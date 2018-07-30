@@ -33,22 +33,26 @@ function withDB(dbConfig, config = {}) {
         .find({ [column]: id })
         .then(user => {
           if (user.length === 1) {
-            req.session.user = user;
+            req.session.user = user[0];
+            next();
           } else if (user.length === 0) {
             throw new Error(
               'No user was returned from the database based on the database configuration you provided. No user data will be placed on req.session.user.'
             );
+            next();
           } else {
             throw new Error(
               'More than one user was returned given the provided database configuration. No user data will be placed on req.session.user'
             );
+            next();
           }
         })
         .catch(err => {
           throw new Error(err);
         });
+    } else {
+      next();
     }
-    next();
   };
 }
 
