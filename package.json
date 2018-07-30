@@ -2,9 +2,11 @@
   "name": "auth-bypass",
   "version": "1.0.0",
   "description": "Middleware for express and postgreSQL to bypass authentication workflows in a development environment, but not in a production environment. Basically, you won't need to log in every time your express server restarts and clears the session store.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest src",
+    "lint": "eslint src/index.js",
+    "coverage": "jest --collectCoverageFrom=src/**.js --coverage src"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,10 @@
     "url": "https://github.com/travisallen6/auth-bypass/issues"
   },
   "homepage": "https://github.com/travisallen6/auth-bypass#readme",
-  "dependencies": {}
+  "devDependencies": {
+    "jest": "^23.4.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
 }
