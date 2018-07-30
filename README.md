@@ -92,7 +92,7 @@ massive(process.env.CONNECTION_STRING).then(db => {
 
 // The object defined as .byObject
 app.use(
-  authBypass.byDB(
+  authBypass.withDB(
     {
       table: 'users',
       column: 'id',
