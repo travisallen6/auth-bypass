@@ -1,6 +1,6 @@
 {
   "name": "auth-bypass",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Middleware for express and postgreSQL to bypass authentication workflows in a development environment, but not in a production environment. Basically, you won't need to log in every time your express server restarts and clears the session store.",
   "main": "src/index.js",
   "scripts": {
