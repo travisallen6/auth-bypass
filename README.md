@@ -28,7 +28,7 @@ This middleware supports the following nodemon.json configuration for determinin
 
 ## There are two methods available to determine what data will be set to the user session
 
-### byObject
+### withObject
 
 This method allows data from a javascript object to be used as the data that will be placed on req.session.user.
 
@@ -48,9 +48,9 @@ app.use(
   })
 );
 
-// The object defined as .byObject
+// The object defined as .withObject
 app.use(
-  authBypass.byObject(
+  authBypass.withObject(
     {
       id: 1,
       name: 'John Doe',
@@ -90,9 +90,9 @@ massive(process.env.CONNECTION_STRING).then(db => {
   console.log('DB Connected');
 });
 
-// The object defined as .byObject
+// The object defined as .withObject
 app.use(
-  authBypass.byDB(
+  authBypass.withDB(
     {
       table: 'users',
       column: 'id',
